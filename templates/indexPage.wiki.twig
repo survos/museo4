@@ -1,0 +1,10 @@
+==Index Page==
+
+{% for dir, files in filesByDir|sort %}
+
+==={{ dir }}===
+
+{% for code, file in files|sort %}
+* [[{{ file }}]]
+{% endfor %}
+{% endfor %}
