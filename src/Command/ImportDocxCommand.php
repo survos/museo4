@@ -140,11 +140,6 @@ class ImportDocxCommand extends Command
 
             $text = trim($text);
 
-
-
-            // old way with PhpOffice $text = $this->extractTextFromDocx($absoluteFilePath);
-
-
             $exhibit
                 ->setFilename($absoluteFilePath)
                 ->setTranscript($text);
