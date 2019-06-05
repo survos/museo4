@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\Exhibit;
 use App\Services\DocxConversion;
 use Doctrine\ORM\EntityManagerInterface;
+/*
 use GGGGino\WordBundle\Factory;
 use PhpOffice\PhpWord\Element\Text;
 use PhpOffice\PhpWord\Element\TextBreak;
@@ -12,6 +13,7 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Reader\ReaderInterface;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\Writer\Word2007\ElementTest;
+*/
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -157,6 +159,7 @@ class ImportDocxCommand extends Command
         $this->em->flush();
     }
 
+    /* composer require GGGGino\WordBundle for this to work */
     private function extractTextFromDocx($filename): string
     {
 
