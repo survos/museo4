@@ -36,17 +36,18 @@ class ImportDocxCommand extends Command
     {
         $this
             ->setDescription('Import Docx audio text files')
-            ->addArgument('rootDir', InputArgument::OPTIONAL, 'AudioGuias Directory', "/var/www/data/zac-guias")
+            ->addArgument('rootDir', InputArgument::OPTIONAL, 'Source AudioGuias Directory', "/var/www/data/zac-guias")
+            ->addArgument('cacheDir', InputArgument::OPTIONAL, 'Target Text AudioGuias Directory', "/var/www/data/museo")
             ->addOption('purge', null, InputOption::VALUE_NONE, 'Purge pages first')
             ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Page limmit', 0)
             ->addOption('search', null, InputOption::VALUE_OPTIONAL, 'filename search', null )
         ;
     }
 
-    public function __construct(Factory $phpWord, EntityManagerInterface $em, Environment $twig, string $name = null)
+    public function __construct(EntityManagerInterface $em, Environment $twig, string $name = null)
     {
         parent::__construct($name);
-        $this->phpWord = $phpWord;
+        // $this->phpWord = $phpWord;
         $this->em = $em;
         $this->twig = $twig;
     }
@@ -54,7 +55,7 @@ class ImportDocxCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-
+        /*
         $tr = new GoogleTranslate();
 
         $tr->setSource('en'); // Translate from English
@@ -64,6 +65,7 @@ class ImportDocxCommand extends Command
         dump($text); die();
 
         // Outputs "Hola Mundo!"
+        */
 
         $io = new SymfonyStyle($input, $output);
         $this->io = $io;
@@ -84,6 +86,7 @@ class ImportDocxCommand extends Command
         $repo = $this->em->getRepository(Exhibit::class);
 
         $api_url = 'http://mw.localhost/api.php';
+        # $api_url = 'http://138.128.242.220/api.php';
         $username = 'tac';
         $password = 'no2smoke';
         $wiki = new Wikimate($api_url);
@@ -96,25 +99,6 @@ class ImportDocxCommand extends Command
             exit(1);
         }
 
-        if ($input->getOption('purge'))
-        {
-
-
-            while (true) { // until there's only one page left
-                $result = $wiki->query(['action' => 'query', 'list' => 'allpages', 'format' => 'php']);
-                foreach ($result['query']['allpages'] as $pageArray) {
-                    $title = $pageArray['title'];
-                    if ($title !== 'Main Page') {
-                        $io->warning("Deleting $title");
-                        $p = $wiki->getPage($title);
-                        $p->delete('Deleted before re-import');
-                    }
-                }
-                if (empty($result['continue'])) {
-                    break;
-                }
-            }
-        }
 
         $i = 0;
         $filesByDir = [];
@@ -149,6 +133,13 @@ class ImportDocxCommand extends Command
                 $text = shell_exec($cmd = sprintf('catdoc "%s"', $absoluteFilePath));
             }
 
+            // loose formatting to wikitext
+            $text = preg_replace('/(“|”)/', "''", $text);
+
+            $text = trim($text);
+
+
+
             // old way with PhpOffice $text = $this->extractTextFromDocx($absoluteFilePath);
 
 
@@ -157,64 +148,13 @@ class ImportDocxCommand extends Command
                 ->setTranscript($text);
                 ;
 
-
-            $page = $wiki->getPage($code);
-
-            $text = "==Texto==\n\n" . $exhibit->getTranscript();
-
-            $text .= "\n\n==Misc==\n\nArchivo Original: f" . $exhibit->getFilename();
-
-            $page->setText($text);
             if ( ($limit = $input->getOption('limit')) && ($i++ > $limit) ) {
                 break;
             }
 
         }
 
-        $page = $wiki->getPage("Index");
-
-        $indexContent = $this->twig->render("indexPage.wiki.twig", [
-            'filesByDir' => $filesByDir
-        ]);
-        print $indexContent;
-        $page->setText($indexContent);
-
-        if ($page->exists()) {
-
-        } else {
-        }
-
-        dump($filesByDir); die();
         $this->em->flush();
-    }
-
-    private function publishToWiki(Exhibit $exhibit)
-    {
-
-#$wiki->setDebugMode(TRUE);
-
-
-
-
-        echo "Fetching 'Sausages'...\n";
-        $page = $wiki->getPage('Sausages');
-
-
-
-
-// check if the page exists or not
-        if (!$page->exists() ) {
-            echo "'Sausages' doesn't exist.\n";
-            /** @todo: add content and save page */
-        } else {
-            // get the page title
-            echo "Title: ".$page->getTitle()."\n";
-            // get the number of sections on the page
-            echo "Number of sections: ".$page->getNumSections()."\n";
-            // get an array of where each section starts and its length
-            echo "Section offsets:".print_r($page->getSectionOffsets(), true)."\n";
-
-        }
     }
 
     private function extractTextFromDocx($filename): string
