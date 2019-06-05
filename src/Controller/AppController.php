@@ -9,7 +9,7 @@ use Wikimate;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/app", name="app")
+     * @Route("/", name="home")
      */
     public function index()
     {

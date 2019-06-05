@@ -31,6 +31,16 @@ class Exhibit
      */
     private $code;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $english;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $relativePath;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class Exhibit
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getEnglish(): ?string
+    {
+        return $this->english;
+    }
+
+    public function setEnglish(?string $english): self
+    {
+        $this->english = $english;
+
+        return $this;
+    }
+
+    public function getRelativePath(): ?string
+    {
+        return $this->relativePath;
+    }
+
+    public function setRelativePath(?string $relativePath): self
+    {
+        $this->relativePath = $relativePath;
 
         return $this;
     }

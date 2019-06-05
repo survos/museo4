@@ -4,25 +4,36 @@
     "require": {
         "php": "^7.1.3",
         "ext-ctype": "*",
-        "ext-dom": "*",
         "ext-iconv": "*",
-        "ext-zip": "*",
-        "ggggino/wordbundle": "^1.0",
         "hamstar/wikimate": "^0.12.0",
-        "sensio/framework-extra-bundle": "^5.3",
-        "stichoza/google-translate-php": "^4.0",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
-        "symfony/debug": "4.3.*",
         "symfony/dotenv": "4.3.*",
-        "symfony/finder": "4.3.*",
-        "symfony/flex": "^1.2",
+        "symfony/expression-language": "4.3.*",
+        "symfony/flex": "^1.1",
         "symfony/form": "4.3.*",
         "symfony/framework-bundle": "4.3.*",
-        "symfony/orm-pack": "^1.0",
-        "symfony/security-csrf": "4.3.*",
+        "symfony/http-client": "4.3.*",
+        "symfony/intl": "4.3.*",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/orm-pack": "*",
+        "symfony/process": "4.3.*",
+        "symfony/security-bundle": "4.3.*",
+        "symfony/serializer-pack": "*",
+        "symfony/swiftmailer-bundle": "^3.1",
+        "symfony/translation": "4.3.*",
         "symfony/twig-bundle": "4.3.*",
         "symfony/validator": "4.3.*",
+        "symfony/web-link": "4.3.*",
         "symfony/yaml": "4.3.*"
+    },
+    "require-dev": {
+        "symfony/debug-pack": "*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/profiler-pack": "*",
+        "symfony/test-pack": "*",
+        "symfony/web-server-bundle": "4.3.*"
     },
     "config": {
         "preferred-install": {
@@ -68,9 +79,5 @@
             "allow-contrib": false,
             "require": "4.3.*"
         }
-    },
-    "require-dev": {
-        "symfony/maker-bundle": "^1.11",
-        "symfony/var-dumper": "4.3.*"
     }
 }
