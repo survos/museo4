@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ExhibitRepository")
+ *
  */
 class Exhibit
 {
@@ -27,6 +29,7 @@ class Exhibit
     private $transcript;
 
     /**
+     * @Gedmo\Slug(fields={"filename"})
      * @ORM\Column(type="string", length=64)
      */
     private $code;
@@ -75,12 +78,14 @@ class Exhibit
         return $this->code;
     }
 
+    /*
     public function setCode(string $code): self
     {
         $this->code = $code;
 
         return $this;
     }
+    */
 
     public function getEnglish(): ?string
     {

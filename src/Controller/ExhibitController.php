@@ -16,12 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class ExhibitController extends AbstractController
 {
     /**
-     * @Route("/player", name="exhibit_player", methods={"GET"})
+     * @Route("/player/{id}", name="exhibit_player", methods={"GET"})
      */
-    public function player(ExhibitRepository $exhibitRepository): Response
+    public function player(Exhibit $exhibit): Response
     {
         return $this->render('exhibit/player.html.twig', [
-            'exhibits' => $exhibitRepository->findAll(),
+            'exhibit' => $exhibit
         ]);
     }
 

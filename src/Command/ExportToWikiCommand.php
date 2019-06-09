@@ -29,7 +29,6 @@ class ExportToWikiCommand extends Command
     private $phpWord;
     private $reader;
     private $io;
-    private $em;
     private $twig;
 
     protected function configure()
@@ -43,6 +42,7 @@ class ExportToWikiCommand extends Command
         ;
     }
 
+    private $em;
     public function __construct(EntityManagerInterface $em, Environment $twig, string $name = null)
     {
         parent::__construct($name);

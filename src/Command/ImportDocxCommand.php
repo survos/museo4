@@ -117,16 +117,19 @@ class ImportDocxCommand extends Command
 
             // filename is code
             $ext = pathinfo($absoluteFilePath, PATHINFO_EXTENSION);
-            $code = basename($file->getFilename(), ".$ext");
-            $io->note('Importing ' . $absoluteFilePath . " to $code");
+            $basename = basename($file->getBasename(), ".$ext");
 
-            $filesByDir[$dir][$code] = $code;
-
-            if (!$exhibit = $repo->findOneBy(['code' => $code])) {
+            if (!$exhibit = $repo->findOneBy(['filename' => $basename])) {
                 $exhibit = (new Exhibit())
-                    ->setCode($code);
+                    ->setFilename($basename)
+                ;
                 $this->em->persist($exhibit);
+                $this->em->flush();
             }
+
+            // $filesByDir[$dir][$code] = $code;
+
+            $io->note('Importing ' . $absoluteFilePath . " to " . $exhibit->getCode());
 
             if ($ext == 'docx') {
                 $service = new DocxConversion($absoluteFilePath);
@@ -141,11 +144,11 @@ class ImportDocxCommand extends Command
             $text = trim($text);
 
             $exhibit
-                ->setFilename($absoluteFilePath)
+                // ->setFilename($absoluteFilePath)
                 ->setTranscript($text);
                 ;
 
-            if ( ($limit = $input->getOption('limit')) && ($i++ > $limit) ) {
+            if ( ($limit = $input->getOption('limit')) && (++$i >= $limit) ) {
                 break;
             }
 
