@@ -38,8 +38,8 @@ class ImportDocxCommand extends Command
     {
         $this
             ->setDescription('Import Docx audio text files')
-            ->addArgument('rootDir', InputArgument::OPTIONAL, 'Source AudioGuias Directory', "/var/www/data/zac-guias")
-            ->addArgument('cacheDir', InputArgument::OPTIONAL, 'Target Text AudioGuias Directory', "/var/www/data/museo")
+            ->addArgument('rootDir', InputArgument::OPTIONAL, 'Source AudioGuias Directory', "./data")
+            ->addArgument('cacheDir', InputArgument::OPTIONAL, 'Target Text AudioGuias Directory', "../data/museo")
             ->addOption('purge', null, InputOption::VALUE_NONE, 'Purge pages first')
             ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Page limmit', 0)
             ->addOption('search', null, InputOption::VALUE_OPTIONAL, 'filename search', null )

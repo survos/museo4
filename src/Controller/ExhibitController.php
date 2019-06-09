@@ -11,10 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/exhibit")
+ * @Route("/")
  */
 class ExhibitController extends AbstractController
 {
+    /**
+     * @Route("/player", name="exhibit_player", methods={"GET"})
+     */
+    public function player(ExhibitRepository $exhibitRepository): Response
+    {
+        return $this->render('exhibit/player.html.twig', [
+            'exhibits' => $exhibitRepository->findAll(),
+        ]);
+    }
+
     /**
      * @Route("/", name="exhibit_index", methods={"GET"})
      */

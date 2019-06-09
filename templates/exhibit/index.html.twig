@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Exhibit index</h1>
 
+    <a href="{{ path('exhibit_player') }}">Player</a>
+
     <table class="table">
         <thead>
             <tr>
@@ -19,9 +21,8 @@
         {% for exhibit in exhibits %}
             <tr>
                 <td>{{ exhibit.id }}</td>
-                <td>{{ exhibit.filename }}</td>
-                <td>{{ exhibit.transcript }}</td>
                 <td>{{ exhibit.code }}</td>
+                <td>{{ exhibit.transcript|slice(0, 255) }}</td>
                 <td>
                     <a href="{{ path('exhibit_show', {'id': exhibit.id}) }}">show</a>
                     <a href="{{ path('exhibit_edit', {'id': exhibit.id}) }}">edit</a>
