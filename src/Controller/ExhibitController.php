@@ -6,6 +6,8 @@ use App\Entity\Exhibit;
 use App\Form\ExhibitType;
 use App\Repository\ExhibitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +26,97 @@ class ExhibitController extends AbstractController
             'exhibit' => $exhibit
         ]);
     }
+
+    /**
+     * @Route("/recorder/{id}", name="exhibit_recorder", methods={"GET"})
+     */
+    public function recorder(Exhibit $exhibit): Response
+    {
+        return $this->render('exhibit/microphone.html.twig', [
+            'exhibit' => $exhibit
+        ]);
+    }
+
+    /**
+     * @Route("/save_audio/{id}", name="exhibit_save_audio", methods={"POST"})
+     */
+    public function saveAudio(Request $request, Exhibit $exhibit): ?Response
+    {
+        $_POST = $request->request->all();
+        dump($_POST);
+
+        $_FILES = $request->files;
+
+        foreach ($request->files as $file) {
+            /** @var UploadedFile $fileName */
+            $tempName = $file->getPath() . '/' . $file->getFilename();
+            dump($file, $tempName);
+            if (!file_exists($tempName)) {
+                throw new \Exception("Problem reading " . $fileName);
+            }
+
+            $newFilename =  $request->get('video-filename');
+            $dir = 'uploads';
+            $result = $file->move($dir, $newFilename);
+            dump($result, $dir, $newFilename);
+
+            $filePath = 'uploads/' . $newFilename;
+            if (!move_uploaded_file($tempName, $filePath)) {
+                echo ('Problem saving file.');
+            }
+
+            die();
+            return new JsonResponse(['uploaded-filename' => $newFilename]);
+        }
+
+
+
+        if (!isset($_POST['audio-filename']) && !isset($_POST['video-filename'])) {
+            echo 'PermissionDeniedError';
+        }
+
+
+
+        $fileName = '';
+        $tempName = '';
+
+        if (isset($_POST['audio-filename'])) {
+            $fileName = $_POST['audio-filename'];
+            $tempName = $_FILES['audio-blob']['tmp_name'];
+        } else {
+            $fileName = $_POST['video-filename'];
+            $tempName = $_FILES['video-blob']['tmp_name'];
+        }
+
+        if (empty($fileName) || empty($tempName)) {
+            echo 'PermissionDeniedError';
+        }
+        $filePath = 'uploads/' . $fileName;
+
+        // make sure that one can upload only allowed audio/video files
+        $allowed = array(
+            'webm',
+            'wav',
+            'mp4',
+            'mp3',
+            'ogg'
+        );
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        if (!$extension || empty($extension) || !in_array($extension, $allowed)) {
+            echo 'PermissionDeniedError';
+        }
+
+        if (!move_uploaded_file($tempName, $filePath)) {
+            echo ('Problem saving file.');
+        }
+
+        echo ($filePath);
+        dump($request); die();
+        return $this->render('exhibit/microphone.html.twig', [
+            'exhibit' => $exhibit
+        ]);
+    }
+
 
     /**
      * @Route("/", name="exhibit_index", methods={"GET"})

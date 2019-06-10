@@ -1,7 +1,9 @@
 Amplitude = require('amplitudejs');
+Foundation = require('foundation');
 
 console.log('in player');
 
+if (0)
 Amplitude.init({
     "songs": [
         {

@@ -110,4 +110,9 @@ class Exhibit
 
         return $this;
     }
+
+    public function getRp()
+    {
+        return ['id' => $this->getId()];
+    }
 }

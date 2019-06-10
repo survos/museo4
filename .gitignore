@@ -7,6 +7,8 @@
 /var/
 /vendor/
 /public/amp
+/public/uploads
+/public/mp3
 /mediawiki/
 
 ###< symfony/framework-bundle ###
