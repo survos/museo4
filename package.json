@@ -14,8 +14,6 @@
         "heroku-postbuild": "encore production --progress"
     },
 
-    "xxheroku-postbuild": "yarn run encore production",
-
     "dependencies": {
         "amplitudejs": "^4.1.0",
         "foundation": "^4.2.1-1",
