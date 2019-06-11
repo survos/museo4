@@ -34,7 +34,7 @@
                     "artist": "Museo Zac Sala",
                     "album": "something",
                     "xurl": "/mp3/{{ exhibit.code }}.mp3?time={{ random(10000) }}",
-                    "url": "/uploads/{{ exhibit.code }}.ogg?time={{ random(10000) }}",
+                    "url": "{{ exhibit.s3Url }}?time={{ random(10000) }}",
                     "cover_art_url": "https://dummyimage.com/600x400/000/fff&text={{ exhibit.code }}"
                 }
             ]
