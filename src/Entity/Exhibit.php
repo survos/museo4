@@ -82,7 +82,6 @@ class Exhibit
     public function setCode(string $code): self
     {
         $this->code = $code;
-
         return $this;
     }
     */
