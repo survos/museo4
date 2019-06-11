@@ -43,15 +43,10 @@ class ExhibitController extends AbstractController
      */
     public function saveAudio(Request $request, S3Client $s3, Exhibit $exhibit): ?Response
     {
-        $_POST = $request->request->all();
-        dump($_POST);
-
-        $_FILES = $request->files;
 
         foreach ($request->files as $file) {
             /** @var UploadedFile $fileName */
             $tempName = $file->getPath() . '/' . $file->getFilename();
-            dump($file, $tempName);
             if (!file_exists($tempName)) {
                 throw new \Exception("Problem reading " . $fileName);
             }
@@ -81,8 +76,11 @@ class ExhibitController extends AbstractController
             */
             return new JsonResponse([
                 'url' => $url,
+                // 'result' => $result,
                 'uploaded-filename' => $newFilename]);
         }
+
+        /*
 
 
 
@@ -130,6 +128,7 @@ class ExhibitController extends AbstractController
         return $this->render('exhibit/microphone.html.twig', [
             'exhibit' => $exhibit
         ]);
+        */
     }
 
 
