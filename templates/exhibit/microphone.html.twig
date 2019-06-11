@@ -30,15 +30,22 @@
   <span id="exhibit-info"  data-post-url="{{ path('exhibit_save_audio', exhibit.rp) }}" data-code="{{ exhibit.code }}"></span>
 
 
+
     <div class="wrapper">
 
       <header>
         <h1>Exhibit {{ exhibit.code }}</h1>
+
       </header>
 
       <div>
+
+        <button id='enable-microphone' class="xx">Enable Microphone</button>
+
         <a href="{{ path('exhibit_player', exhibit.rp) }}">Player</a>
         {{ exhibit.transcript }}
+
+        <a target="_blank" href="{{ exhibit.s3Url}}">{{ exhibit.s3Url }}</a>
       </div>
 
       <section class="main-controls">

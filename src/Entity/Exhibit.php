@@ -87,6 +87,10 @@ class Exhibit
     }
     */
 
+    public function s3Url() {
+        $url = sprintf('https://s3.amazonaws.com/%s/%s.ogg', getenv('S3_BUCKET') ?: 'museo.survos.com', $this->getCode());
+        return $url;
+    }
     public function getEnglish(): ?string
     {
         return $this->english;

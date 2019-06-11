@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Exhibit;
 use App\Form\ExhibitType;
 use App\Repository\ExhibitRepository;
+use Aws\S3\S3Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -40,7 +41,7 @@ class ExhibitController extends AbstractController
     /**
      * @Route("/save_audio/{id}", name="exhibit_save_audio", methods={"POST"})
      */
-    public function saveAudio(Request $request, Exhibit $exhibit): ?Response
+    public function saveAudio(Request $request, S3Client $s3, Exhibit $exhibit): ?Response
     {
         $_POST = $request->request->all();
         dump($_POST);
@@ -56,6 +57,17 @@ class ExhibitController extends AbstractController
             }
 
             $newFilename =  $request->get('video-filename');
+
+            // upload to s3 bucket
+            $bucket = getenv('S3_BUCKET') ?: 'museo.survos.com'; //@hack!
+            $result = $s3->upload($bucket, $newFilename, fopen($tempName, 'rb'), 'public-read');
+
+            $url = sprintf('https://s3.amazonaws.com/%s/%s', $bucket, $newFilename);
+
+            /*
+
+            dump($result); die();
+
             $dir = 'uploads';
             $result = $file->move($dir, $newFilename);
             dump($result, $dir, $newFilename);
@@ -66,7 +78,10 @@ class ExhibitController extends AbstractController
             }
 
             die();
-            return new JsonResponse(['uploaded-filename' => $newFilename]);
+            */
+            return new JsonResponse([
+                'url' => $url,
+                'uploaded-filename' => $newFilename]);
         }
 
 
@@ -152,7 +167,7 @@ class ExhibitController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="exhibit_show", methods={"GET"})
+     * @Route("/show/{id}", name="exhibit_show", methods={"GET"})
      */
     public function show(Exhibit $exhibit): Response
     {

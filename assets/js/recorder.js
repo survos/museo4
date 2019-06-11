@@ -30,13 +30,34 @@ function uploadToPHPServer(blob) {
     formData.append('video-filename', file.name);
     formData.append('video-blob', file);
 
+
     console.log(formData);
     let url = $('#exhibit-info').data('postUrl');
     console.log('posting to ' + url);
 
-    makeXMLHttpRequest(url, formData, function() {
-        var downloadURL = 'https://path-to-your-server/uploads/' + file.name;
-        console.log('File uploaded to this path:', downloadURL);
+    /*
+    let params = {
+        'video-filename' : file.name,
+        'video-blob': file
+    };
+
+    $.post(url, params, function (data) {
+        console.log(data);
+        // update the URL on the page? Redirect?
+    })
+        .fail(function(error) {
+            console.error(error)
+        })
+        .always(function (data) {
+            console.warn(data);
+        });
+
+     */
+
+    makeXMLHttpRequest(url, formData, function(data) {
+        console.log(data);
+        console.log('File uploaded to this path:', data.url);
+
     });
 }
 
@@ -44,7 +65,9 @@ function makeXMLHttpRequest(url, data, callback) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200) {
-            callback();
+            json = JSON.parse(request.response);
+            console.log(json);
+            callback(json);
         }
     };
     request.open('POST', url);
@@ -73,7 +96,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
             stop.disabled = false;
             record.disabled = true;
-        }
+        };
 
         stop.onclick = function() {
             mediaRecorder.stop();
@@ -85,7 +108,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
             stop.disabled = true;
             record.disabled = false;
-        }
+        };
 
         mediaRecorder.onstop = function(e) {
 
@@ -157,13 +180,18 @@ if (navigator.mediaDevices.getUserMedia) {
 
     var onError = function(err) {
         console.log('The following error occured: ' + err);
-    }
+    };
 
-    navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
+    $('#enable-microphone').click(function() {
+        navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
+    });
+
 
 } else {
     console.log('getUserMedia not supported on your browser!');
 }
+
+
 
 function visualize(stream) {
     var source = audioCtx.createMediaStreamSource(stream);

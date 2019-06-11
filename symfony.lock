@@ -84,6 +84,12 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "donatj/phpuseragentparser": {
+        "version": "v0.10.0"
+    },
+    "dziki/monolog-sentry-bundle": {
+        "version": "v1.0.0"
+    },
     "easycorp/easy-log-handler": {
         "version": "1.0",
         "recipe": {
@@ -200,6 +206,9 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "sentry/sentry": {
+        "version": "1.10.0"
     },
     "stichoza/google-translate-php": {
         "version": "v4.0.1"
