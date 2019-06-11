@@ -3,8 +3,8 @@ server {
   # Make this more specific because of conflict with other configs loaded:
   listen 127.0.0.1:80;
 
-    server_name tac.tobacco.org news n4;
-    root /var/www/n4/public;
+    server_name museo museo.survos.com museo.localhost;
+    root /var/www/museo/public;
 
     location / {
         # try to serve file directly, fallback to index.php
@@ -42,6 +42,6 @@ server {
         return 404;
     }
 
-    error_log /var/log/nginx/news_error.log;
-    access_log /var/log/nginx/news_access.log;
+    error_log /var/log/nginx/museo_error.log;
+    access_log /var/log/nginx/museo_access.log;
 }
