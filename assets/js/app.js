@@ -6,10 +6,21 @@
  */
 
 // any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
+// const $ = require('jquery');
+
 require('amplitudejs');
+// require('popper.js');
+// require('bootstrap');
+
+import 'bootstrap';  // js-file
+import 'bootstrap/dist/css/bootstrap.css'; // css file
+
+import Popper from 'popper.js';
+import $ from 'jquery';
+
+
+require('../css/app.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-const $ = require('jquery');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

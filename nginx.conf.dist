@@ -3,7 +3,7 @@ server {
   # Make this more specific because of conflict with other configs loaded:
   listen 127.0.0.1:80;
 
-    server_name museo museo.survos.com museo.localhost;
+    server_name museo museo.survos.com  museo.survos.com.localhost museo.localhost;
     root /var/www/museo/public;
 
     location / {

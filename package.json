@@ -13,10 +13,11 @@
         "build": "encore production --progress",
         "heroku-postbuild": "encore production --progress"
     },
-
     "dependencies": {
         "amplitudejs": "^4.1.0",
+        "bootstrap": "^4.3.1",
         "foundation": "^4.2.1-1",
-        "jquery": "^3.4.1"
+        "jquery": "^3.4.1",
+        "popper.js": "^1.15.0"
     }
 }
