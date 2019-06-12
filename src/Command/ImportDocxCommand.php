@@ -148,7 +148,7 @@ class ImportDocxCommand extends Command
 
             $exhibit
                 // ->setFilename($absoluteFilePath)
-                ->setDescription(substr($text, 60, 48))
+                ->setDescription(mb_substr($text, 60, 48))
                 ->setTranscript($text);
                 ;
 

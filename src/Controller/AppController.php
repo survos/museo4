@@ -37,14 +37,16 @@ class AppController extends AbstractController
 
     /**
      * @Route("/phpinfo", name="phpinfo")
-     */
+     * PASSWORDS EXPOSED!!
     public function phpinfo(ExhibitRepository $repo)
     {
         ob_start();
         phpinfo();
-        $html = ob_end_flush();
+        $html = ob_get_contents();
+        ob_end_clean();
         return new Response($html);
     }
+     */
 
     /**
      * @Route("/test", name="test")
