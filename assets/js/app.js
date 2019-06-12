@@ -15,8 +15,18 @@ require('amplitudejs');
 import 'bootstrap';  // js-file
 import 'bootstrap/dist/css/bootstrap.css'; // css file
 
-import Popper from 'popper.js';
-import $ from 'jquery';
+require('foundation');
+
+// import 'foundation.css'; // css file
+
+// import Popper from 'popper.js';
+// import $ from 'jquery';
+const $ = require('jquery');
+const Popper = require('popper.js');
+
+
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
 
 
 require('../css/app.css');

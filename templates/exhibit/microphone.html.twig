@@ -35,15 +35,14 @@
 
       <header>
         <h1>Exhibit {{ exhibit.code }}</h1>
-
       </header>
+
 
       <div>
 
         <button id='enable-microphone' class="xx">Enable Microphone</button>
 
         <a href="{{ path('exhibit_player', exhibit.rp) }}">Player</a>
-        {{ exhibit.transcript }}
 
         <a target="_blank" href="{{ exhibit.s3Url}}">{{ exhibit.s3Url }}</a>
       </div>
@@ -61,7 +60,12 @@
 
       </section>
 
+      <div class="row">
+        {{ exhibit.transcript }}
+      </div>
+
     </div>
+
 
     <label for="toggle">❔</label>
     <input type="checkbox" id="toggle">
