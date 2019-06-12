@@ -4,18 +4,20 @@ namespace App\Controller;
 
 use App\Repository\ExhibitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Wikimate;
 
 class AppController extends AbstractController
 {
+
     /**
      * @Route("/exhibits-feed.{_format}", name="exhibits_feed")
      */
-    public function exhibits(ExhibitRepository $repo, SerializerInterface $serializer, $_format='json')
+    public function exhibitsFeed(ExhibitRepository $repo, SerializerInterface $serializer, $_format='json')
     {
-        $exhibits = $repo->findBy([]);
+        $exhibits = $repo->findWithAudio();
 
         $data = $serializer->serialize($exhibits, 'json', ['groups' => ['playlist'] ] );
 
@@ -27,10 +29,21 @@ class AppController extends AbstractController
      */
     public function playlist(ExhibitRepository $repo)
     {
-        $exhibits = $repo->findBy([]);
+        $exhibits = $repo->findWithAudio();
         return $this->render("playlist.html.twig", [
             'exhibits' => $exhibits
         ]);
+    }
+
+    /**
+     * @Route("/phpinfo", name="phpinfo")
+     */
+    public function phpinfo(ExhibitRepository $repo)
+    {
+        ob_start();
+        phpinfo();
+        $html = ob_end_flush();
+        return new Response($html);
     }
 
     /**

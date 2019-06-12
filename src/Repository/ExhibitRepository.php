@@ -19,6 +19,20 @@ class ExhibitRepository extends ServiceEntityRepository
         parent::__construct($registry, Exhibit::class);
     }
 
+    /**
+    * @return Exhibit[] Returns an array of Exhibit objects
+    */
+    public function findWithAudio($limit=10, $language='es')
+    {
+        return $this->createQueryBuilder('e')
+//            ->andWhere('e.duration > 0')
+            ->orderBy('e.id', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Exhibit[] Returns an array of Exhibit objects
     //  */

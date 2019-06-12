@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MediaController extends AbstractController
 {
     /**
-     * @Route("/media", name="media")
+     * @Route("/media", name="s3_index")
      */
     public function index(S3Client $s3)
     {

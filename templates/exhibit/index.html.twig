@@ -30,8 +30,9 @@
     </tr>
     </tbody>
 </table>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Museo Zac</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,7 +43,7 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{{ path('s3_index') }}">S3</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
@@ -107,8 +108,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Code</th>
-                <th>Transcript</th>
+                <th>Title</th>
+                <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -116,8 +117,8 @@
         {% for exhibit in exhibits %}
             <tr>
                 <td>{{ exhibit.id }}</td>
-                <td>{{ exhibit.code }}</td>
-                <td>{{ exhibit.transcript|slice(0, 255) }}</td>
+                <td>{{ exhibit.title }}</td>
+                <td>{{ exhibit.description }} </td>
                 <td>
                     <a href="{{ path('exhibit_show', {'id': exhibit.id}) }}">show</a>
                     <a href="{{ path('exhibit_player', {'id': exhibit.id}) }}">play</a>

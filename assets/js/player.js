@@ -10,8 +10,8 @@ $.get("/exhibits-feed.json", function(data) {
     console.log(data);
     data.forEach(function (d) {
         let song = {
-            artist: "Description of exhibit",
-            album: "Sala #1",
+            artist: d.title,
+            album: d.description,
             name: d.filename,
             cover_art_url: "https://dummyimage.com/300x200/000/fff&text=" + d.code,
             url: d.s3Url

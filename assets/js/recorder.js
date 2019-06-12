@@ -1,7 +1,5 @@
 // set up basic variables for app
 
-$('#test').html('Code: ' + $('#exhibit-info').data('code'));
-
 var record = document.querySelector('.record');
 var stop = document.querySelector('.stop');
 var soundClips = document.querySelector('.sound-clips');
@@ -57,6 +55,7 @@ function uploadToPHPServer(blob) {
     makeXMLHttpRequest(url, formData, function(data) {
         console.log(data);
         console.log('File uploaded to this path:', data.url);
+        location.reload();
 
     });
 }
@@ -157,6 +156,8 @@ if (navigator.mediaDevices.getUserMedia) {
             };
 
             uploadButton.onclick = function(e) {
+                $('#existing-audio-player').html('Uploading!');
+                $('#transcript').html('uploading... Favor de esperar!');
                 uploadToPHPServer(blob);
                 // evtTgt = e.target;
                 // evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);

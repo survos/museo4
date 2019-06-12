@@ -6,6 +6,7 @@ use App\Entity\Exhibit;
 use App\Form\ExhibitType;
 use App\Repository\ExhibitRepository;
 use Aws\S3\S3Client;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -41,7 +42,7 @@ class ExhibitController extends AbstractController
     /**
      * @Route("/save_audio/{id}", name="exhibit_save_audio", methods={"POST"})
      */
-    public function saveAudio(Request $request, S3Client $s3, Exhibit $exhibit): ?Response
+    public function saveAudio(Request $request, S3Client $s3, Exhibit $exhibit, EntityManagerInterface $em): ?Response
     {
 
         foreach ($request->files as $file) {
@@ -57,7 +58,14 @@ class ExhibitController extends AbstractController
             $bucket = getenv('S3_BUCKET') ?: 'museo.survos.com'; //@hack!
             $result = $s3->upload($bucket, $newFilename, fopen($tempName, 'rb'), 'public-read');
 
+            // dump($result);
+
+            $exhibit
+                ->setDuration(round(filesize($tempName) / 50));
+            $em->flush();
+
             $url = sprintf('https://s3.amazonaws.com/%s/%s', $bucket, $newFilename);
+
 
             /*
 

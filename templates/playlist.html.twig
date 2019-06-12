@@ -95,10 +95,10 @@
 
 
 					  {% for e in exhibits %}
-					  <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index + 1 }}">
+					  <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index - 1}}">
 						  <div class="song-now-playing-icon-container">
 							  <div class="play-button-container">
-
+                                  {{ loop.index }}
 							  </div>
 							  <img class="now-playing" src="/playlist/img/now-playing.svg"/>
 						  </div>
@@ -106,7 +106,8 @@
 							  <span class="song-title">{{ e.filename }}</span>
 							  <span class="song-artist">{{ e.code }}</span>
 						  </div>
-						  <a href="https://lorn.bandcamp.com/" class="bandcamp-link" target="_blank">
+                          <a href="{{ path('exhibit_recorder', e.rp) }}" target="_blank"><i class="fa fa-microphone"></i></a>
+						  <a href="{{ path('exhibit_player', e.rp) }}" class="bandcamp-link" target="_blank">
 							  <img class="bandcamp-grey" src="/playlist/img/bandcamp-grey.svg"/>
 							  <img class="bandcamp-white" src="/playlist/img/bandcamp-white.svg"/>
 						  </a>

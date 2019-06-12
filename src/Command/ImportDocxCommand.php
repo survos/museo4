@@ -121,6 +121,7 @@ class ImportDocxCommand extends Command
 
             if (!$exhibit = $repo->findOneBy(['filename' => $basename])) {
                 $exhibit = (new Exhibit())
+                    ->setTitle($basename)
                     ->setFilename($basename)
                 ;
                 $this->em->persist($exhibit);
@@ -143,8 +144,11 @@ class ImportDocxCommand extends Command
 
             $text = trim($text);
 
+
+
             $exhibit
                 // ->setFilename($absoluteFilePath)
+                ->setDescription(substr($text, 60, 48))
                 ->setTranscript($text);
                 ;
 

@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exhibit Player: {{ exhibit.code }}{% endblock %}
+{% block title %}Exhibit Player: {{ exhibit.title }}{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('player') }}
 
+    {#
+        {{ encore_entry_script_tags('player') }}
+#}
     <!-- Include Amplitude JS
     <script type="text/javascript" src="../../dist/amplitude.js"></script>
     -->
@@ -30,12 +32,11 @@
             },
             "songs": [
                 {
-                    "name": "{{ exhibit.filename }}",
-                    "artist": "Sala ??",
+                    "name": "{{ exhibit.title }}",
+                    "artist": "{{ exhibit.description }}",
                     "album": "Piso ?/Sala ?",
-                    "xurl": "/mp3/{{ exhibit.code }}.mp3?time={{ random(10000) }}",
                     "url": "{{ exhibit.s3Url }}?time={{ random(10000) }}",
-                    "cover_art_url": "https://dummyimage.com/600x400/000/fff&text={{ exhibit.code }}"
+                    "cover_art_url": "https://dummyimage.com/600x400/000/fff&text={{ exhibit.title }}"
                 }
             ]
         });
@@ -72,7 +73,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>Exhibit player</h1>
+<h1>Exhibit: {{ exhibit.title }}</h1>
 
     <div class="grid-x grid-padding-x">
         <div class="large-12 medium-12 small-12 cell">

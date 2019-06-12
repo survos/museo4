@@ -22,63 +22,58 @@
 {% endblock %}
 
 {% block body %}
+  <header>
+    <h1>Exhibit {{ exhibit.code }}</h1>
+  </header>
 
-
-
-  <h2 id="test" data-code="{{ exhibit.code }}"></h2>
 
   <span id="exhibit-info"  data-post-url="{{ path('exhibit_save_audio', exhibit.rp) }}" data-code="{{ exhibit.code }}"></span>
 
+  <div id="existing-audio-player">
+    <audio controls="controls" src="{{ exhibit.s3Url }}?time={{ random(25000) }}">
+      Your browser does not support the HTML5 audio element.
+    </audio>
+  </div>
 
 
-    <div class="wrapper">
-
-      <header>
-        <h1>Exhibit {{ exhibit.code }}</h1>
-      </header>
-
-
-      <div>
-
-        <button id='enable-microphone' class="xx">Enable Microphone</button>
-
-        <a href="{{ path('exhibit_player', exhibit.rp) }}">Player</a>
-
-        <a target="_blank" href="{{ exhibit.s3Url}}">{{ exhibit.s3Url }}</a>
-      </div>
-
-      <section class="main-controls">
-        <canvas class="visualizer" height="60px"></canvas>
-        <div id="buttons">
-          <button class="record">Record</button>
-          <button class="stop">Stop</button>
-        </div>
-      </section>
-
-      <section class="sound-clips">
-
-
-      </section>
-
-      <div class="row">
-        {{ exhibit.transcript }}
-      </div>
-
+  <div class="row">
+    <div class="col-md-6">
+      <span style="font-size: large" id="transcript">
+      {{ exhibit.transcript }}
+      </span>
     </div>
 
-
-    <label for="toggle">❔</label>
-    <input type="checkbox" id="toggle">
-    <aside>
-      <h2>Information</h2>
-
-      <p>Web dictaphone is built using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia">getUserMedia</a> and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder_API">MediaRecorder API</a>, which provides an easier way to capture Media streams.</p>
-
-      <p>Icon courtesy of <a href="http://findicons.com/search/microphone">Find Icons</a>. Thanks to <a href="http://soledadpenades.com/">Sole</a> for the Oscilloscope code!</p>
-
+    <div class="col-md-6">
+      {{ block('recorder') }}
+    </div>
+  </div>
       <button id="install-btn">Install app</button>
-    </aside>
 
+{% endblock %}
 
+{% block recorder %}
+
+  <div>
+
+    <button id='enable-microphone' class="xx">Enable Microphone</button>
+    <a target="_blank" href="{{ exhibit.s3Url}}">{{ exhibit.s3Url }}</a>
+
+  </div>
+
+  <section class="main-controls">
+    <canvas class="visualizer" height="60px"></canvas>
+    <div id="buttons">
+      <button class="record">Record</button>
+      <button class="stop">Stop</button>
+    </div>
+  </section>
+
+  <section class="sound-clips">
+    Sound clips here.
+  </section>
+
+  <div class="row">
+    {{ 0 ? exhibit.transcript }}
+  </div>
 
 {% endblock %}
