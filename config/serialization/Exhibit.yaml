@@ -1,0 +1,8 @@
+App\Entity\Exhibit:
+  attributes:
+    code:
+      groups: ['Default', 'playlist']
+    filename:
+      groups: ['Default', 'playlist']
+    s3Url:
+      groups: ['playlist']

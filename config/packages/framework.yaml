@@ -16,5 +16,11 @@ framework:
     php_errors:
         log: true
 
+    serializer:
+        enabled: true
+        mapping:
+            paths: ['%kernel.project_dir%/config/serialization/']
+
 parameters:
     env(S3_BUCKET): 'museo.survos.com'
+
