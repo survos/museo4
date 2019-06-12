@@ -2,20 +2,34 @@
 
 namespace App\Controller;
 
+use App\Repository\ExhibitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 use Wikimate;
 
 class AppController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/exhibits-feed.{_format}", name="exhibits_feed")
      */
-    public function index()
+    public function exhibits(ExhibitRepository $repo, SerializerInterface $serializer, $_format='json')
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/AppController.php',
+        $exhibits = $repo->findBy([]);
+
+        $data = $serializer->serialize($exhibits, 'json', ['groups' => ['playlist'] ] );
+
+        return $this->json(json_decode($data, true));
+    }
+
+    /**
+     * @Route("/audio-guide", name="player")
+     */
+    public function playlist(ExhibitRepository $repo)
+    {
+        $exhibits = $repo->findBy([]);
+        return $this->render("playlist.html.twig", [
+            'exhibits' => $exhibits
         ]);
     }
 
