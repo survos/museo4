@@ -129,9 +129,9 @@ class Exhibit
         return $this;
     }
 
-    public function getRp()
+    public function getRp($addl = [])
     {
-        return ['id' => $this->getId()];
+        return array_merge($addl, ['id' => $this->getId()]);
     }
 
     public function getTitle(): ?string

@@ -54,7 +54,7 @@
       {{ block('recorder') }}
     </div>
   </div>
-  <a class="btn btn-primary btn-lg" href="{{ path('player') }}">AudioGuia</a>
+  <a class="btn btn-primary btn-lg" href="{{ path('player', exhibit.rp({random: random(10000)})) }}">AudioGuia</a>
       <button id="install-btn"><Install app</button>
 
 {% endblock %}
