@@ -36,7 +36,10 @@
 		<div class="grid-x" id="blue-playlist-container">
 			<div class="large-11 medium-12 small-11 large-centered medium-centered small-centered cell" id="amplitude-player">
 				<div class="grid-x">
+
 				  <div class="large-12 medium-12 small-12 cell" id="amplitude-left">
+
+
 				    <img data-amplitude-song-info="cover_art_url"/>
 				    <div id="player-left-bottom">
 				      <div id="time-container">
@@ -91,15 +94,13 @@
 				  </div>
 
 
-				  <div class="large-6 medium-6 small-12 cell" id="amplitude-right">
-
+				  <div class="large-12 medium-12 small-12 cell" id="amplitude-right">
 
 					  {% for e in exhibits %}
 
 					  <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index - 1}}">
 						  <div class="song-now-playing-icon-container">
 							  <div class="play-button-container">
-                                  {{ loop.index }}
 							  </div>
 							  <img class="now-playing" src="/playlist/img/now-playing.svg"/>
 						  </div>
