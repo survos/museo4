@@ -10,6 +10,8 @@ var mainSection = document.querySelector('.main-controls');
 
 stop.disabled = true;
 
+$('.main-controls').hide();
+
 // visualiser setup - create web audio api context and canvas
 
 var audioCtx = new (window.AudioContext || webkitAudioContext)();
@@ -84,6 +86,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
     var onSuccess = function(stream) {
         var mediaRecorder = new MediaRecorder(stream);
+        $('.main-controls').show();
 
         visualize(stream);
 
