@@ -21,6 +21,11 @@ framework:
         mapping:
             paths: ['%kernel.project_dir%/config/serialization/']
 
+    default_locale: 'en'
+    translator:
+      fallbacks: ['en']
+      # ...
+
 parameters:
     env(S3_BUCKET): 'museo.survos.com'
 

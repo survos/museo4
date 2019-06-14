@@ -3,11 +3,18 @@
 {% block title %}Edit Exhibit{% endblock %}
 
 {% block body %}
-    <h1>Edit Exhibit</h1>
+<main role="main">
+
+    <div class="container">
+
+
+    <h1>Edit Exhibit {{ exhibit.id }}</h1>
 
     {{ include('exhibit/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('exhibit_index') }}">back to list</a>
 
     {{ include('exhibit/_delete_form.html.twig') }}
-{% endblock %}
+</div>
+</main>
+    {% endblock %}

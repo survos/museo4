@@ -33,4 +33,4 @@ require('../css/app.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+console.log('Webpack Encore app.js initialized.');

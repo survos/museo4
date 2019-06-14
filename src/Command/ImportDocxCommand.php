@@ -141,14 +141,26 @@ class ImportDocxCommand extends Command
 
             // loose formatting to wikitext
             $text = preg_replace('/(“|”)/', "''", $text);
+            $text = preg_replace('/\(?Palabras:\s*\d+\s?\)?\s*/', "''", $text);
 
             $text = trim($text);
 
+            // if there's a title line, set the description and remove it.
+            if (preg_match('/^(.*)\n\n/', $text, $m)) {
+                dump($m);
+                $description = $m[1];
+                $text = str_replace($m[0], '', $text);
+            } else {
+                $title = $basename;
+                $text = preg_replace("/^$title/", '', $text);
+                dump($text);
+                $description = '?? ' . mb_substr($text, 0, 48);
+            }
 
 
             $exhibit
                 // ->setFilename($absoluteFilePath)
-                ->setDescription(mb_substr($text, 60, 48))
+                ->setDescription($description)
                 ->setTranscript($text);
                 ;
 

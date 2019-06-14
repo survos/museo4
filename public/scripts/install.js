@@ -16,14 +16,20 @@ function install(ev) {
 };
 
 // get a reference to the button and call install() on click if the app isn't already installed. If it is, hide the button.
-var button = document.getElementById('install-btn');
+// https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PWAs
 
-var installCheck = navigator.mozApps.checkInstalled(manifest_url);
+// worth checking out at some point
+if (0) {
+  var button = document.getElementById('install-btn');
 
-installCheck.onsuccess = function() {
-  if(installCheck.result) {
-    button.style.display = "none";
-  } else {
-    button.addEventListener('click', install, false);
+  var installCheck = navigator.mozApps.checkInstalled(manifest_url);
+
+  installCheck.onsuccess = function() {
+    if(installCheck.result) {
+      button.style.display = "none";
+    } else {
+      button.addEventListener('click', install, false);
+    };
   };
-};
+}
+

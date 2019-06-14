@@ -46,7 +46,7 @@
   <div class="row">
     <div class="col-md-6">
       <span style="font-size: large" id="transcript">
-      {{ exhibit.transcript }}
+      {{ exhibit.transcript|markdown }}
       </span>
     </div>
 
@@ -55,8 +55,10 @@
     </div>
   </div>
   <a class="btn btn-primary btn-lg" href="{{ path('player', exhibit.rp({random: random(10000)})) }}">AudioGuia</a>
-      <button id="install-btn"><Install app</button>
 
+  {# for Progressive Web Apps
+       <button id="install-btn">Install app</button>
+#}
 {% endblock %}
 
 {% block recorder %}

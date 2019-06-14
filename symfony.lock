@@ -1,4 +1,7 @@
 {
+    "alchemy/binary-driver": {
+        "version": "5.1.0"
+    },
     "aws/aws-sdk-php": {
         "version": "3.99.4"
     },
@@ -102,6 +105,9 @@
     "egulias/email-validator": {
         "version": "2.1.8"
     },
+    "evenement/evenement": {
+        "version": "v2.1.0"
+    },
     "facebook/webdriver": {
         "version": "1.6.0"
     },
@@ -138,17 +144,26 @@
     "knplabs/knp-gaufrette-bundle": {
         "version": "v0.6.1"
     },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.7.1"
+    },
     "league/flysystem": {
         "version": "1.0.52"
     },
     "league/flysystem-aws-s3-v3": {
         "version": "1.0.23"
     },
+    "michelf/php-markdown": {
+        "version": "1.8.0"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },
     "mtdowling/jmespath.php": {
         "version": "2.4.0"
+    },
+    "neutron/temporary-filesystem": {
+        "version": "2.3.0"
     },
     "nikic/php-parser": {
         "version": "v4.2.2"
@@ -167,6 +182,9 @@
         "files": [
             "config/packages/oneup_flysystem.yaml"
         ]
+    },
+    "php-ffmpeg/php-ffmpeg": {
+        "version": "v0.14"
     },
     "php-http/client-common": {
         "version": "2.0.0"

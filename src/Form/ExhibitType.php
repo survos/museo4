@@ -15,6 +15,7 @@ class ExhibitType extends AbstractType
         $builder
             ->add('filename')
             ->add('transcript', TextareaType::class, [
+                'attr' => array('style' => 'height: 400px'),
                 'required' => false,
             ])
         ;

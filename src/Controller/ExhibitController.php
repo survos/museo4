@@ -141,7 +141,8 @@ class ExhibitController extends AbstractController
 
 
     /**
-     * @Route("/", name="exhibit_index", methods={"GET"})
+     * @Route("/exhibits", name="exhibit_index", methods={"GET"})
+     * @Route("/", name="home", methods={"GET"})
      */
     public function index(ExhibitRepository $exhibitRepository): Response
     {
@@ -194,9 +195,7 @@ class ExhibitController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('exhibit_index', [
-                'id' => $exhibit->getId(),
-            ]);
+            return $this->redirectToRoute('exhibit_show', $exhibit->getRp());
         }
 
         return $this->render('exhibit/edit.html.twig', [
