@@ -1,0 +1,7 @@
+home:
+  title: Museo Zacatecano AudioGuide Admin
+  intro: This is the Museo Zacatecano Administrative Portal.
+
+  public:
+    title: Visitor AudioGuide
+    description: The page the visitor goes to on their mobile device.
