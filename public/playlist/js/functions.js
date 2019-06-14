@@ -5,7 +5,7 @@ $(document).ready(function(){
 	/*
 		Initializes foundation for responsive design.
 	*/
-	$(document).foundation();
+	// $(document).foundation();
 
 	/*
 		Equalizes the player heights for left and right side of the player

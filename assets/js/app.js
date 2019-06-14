@@ -15,7 +15,7 @@ require('amplitudejs');
 import 'bootstrap';  // js-file
 import 'bootstrap/dist/css/bootstrap.css'; // css file
 
-require('foundation');
+/// require('foundation');
 
 // import 'foundation.css'; // css file
 
