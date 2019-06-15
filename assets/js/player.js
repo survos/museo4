@@ -14,6 +14,10 @@ Amplitude.addSong({
 console.log(Amplitude.getSongs());
 */
 
+$('.song-title').click(function (e) {
+    console.log('song title clicked.', e);
+});
+
 let songs = [];
 $.get("/exhibits-feed.json", function(data) {
     // Amplitude.init({debug: true, "songs": []});
@@ -22,7 +26,8 @@ $.get("/exhibits-feed.json", function(data) {
             artist: d.title,
             album: d.description,
             name: d.filename,
-            cover_art_url: "https://dummyimage.com/800x240/000/fff&text=foto+de+" + d.code,
+            id: d.id,
+            cover_art_url: "https://dummyimage.com/800x240/000/eee&text=foto+de+" + d.title,
             url: d.s3Url
         };
         songs.push(song);
@@ -35,11 +40,11 @@ $.get("/exhibits-feed.json", function(data) {
     });
 
     Amplitude.init({
-        default_playlist_art: 'https://dummyimage.com/100x50/444/fff&text=' + 'playlist',
+        default_playlist_art: 'https://dummyimage.com/100x50/544/eee&text=' + 'playlist',
         continue_next: false,
         preload: 'metadata',
-        // debug: true,
-        "songs": songs
+        debug: true,
+        songs: songs
     });
     /*
     console.log(songs, Amplitude.getSongs());
@@ -77,6 +82,7 @@ $.get("/exhibits-feed.json", function(data) {
         play the song.
     */
     $('.bandcamp-link').on('click', function( e ){
+        console.log('bandcamk-link clicked', e);
 
         e.stopPropagation();
     });
@@ -84,7 +90,7 @@ $.get("/exhibits-feed.json", function(data) {
     /*
         Ensure that on mouseover, CSS styles don't get messed up for active songs.
     */
-    jQuery('.song').on('mouseover', function(){
+    $('.song').on('mouseover', function(){
         jQuery(this).css('background-color', '#00A0FF');
         jQuery(this).find('.song-meta-data .song-title').css('color', '#FFFFFF');
         jQuery(this).find('.song-meta-data .song-artist').css('color', '#FFFFFF');
@@ -101,7 +107,7 @@ $.get("/exhibits-feed.json", function(data) {
     /*
         Ensure that on mouseout, CSS styles don't get messed up for active songs.
     */
-    jQuery('.song').on('mouseout', function(){
+    $('.song').on('mouseout', function(){
         jQuery(this).css('background-color', '#FFFFFF');
         jQuery(this).find('.song-meta-data .song-title').css('color', '#272726');
         jQuery(this).find('.song-meta-data .song-artist').css('color', '#607D8B');
@@ -114,7 +120,21 @@ $.get("/exhibits-feed.json", function(data) {
     /*
         Show and hide the play button container on the song when the song is clicked.
     */
+
+
     jQuery('.song').on('click', function(){
+
+
+        /*
+        var context = Amplitude.audio;
+        console.log('Song clicked.', Amplitude);
+
+        context.resume().then(() => {
+            console.log('Playback resumed successfully');
+        });
+        
+         */
+
         jQuery(this).find('.play-button-container').css('display', 'none');
     });
 // });
@@ -123,7 +143,8 @@ $.get("/exhibits-feed.json", function(data) {
 	Adjusts the height of the left and right side of the players to be the same.
 */
 function adjustPlayerHeights(){
-    if( Foundation.MediaQuery.atLeast('medium') ) {
+    if( false ) {
+    // if( Foundation.MediaQuery.atLeast('medium') ) {
         var left = $('div#amplitude-left').width();
         var bottom = $('div#player-left-bottom').outerHeight();
         $('#amplitude-right').css('height', ( left + bottom )+'px');

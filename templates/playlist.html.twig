@@ -15,9 +15,6 @@
 
 			NOTE: These are for handling things outside of the scope of AmplitudeJS
 		-->
-		{{ encore_entry_script_tags('app') }}
-		{{ encore_entry_script_tags('player') }}
-
 
 
 		<!-- Include Amplitude JS
@@ -105,25 +102,19 @@
 
 					  {% for e in exhibits %}
 
-					  <div class="song amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index - 1}}">
+					  <div class="song">
+					  <div class="amplitude-song-container amplitude-play-pause" data-amplitude-song-index="{{ loop.index - 1}}">
 						  <div class="song-now-playing-icon-container">
 							  <div class="play-button-container">
-
 							  </div>
 							  <img class="now-playing" src="/playlist/img/now-playing.svg"/>
 						  </div>
 
 						  <div class="song-meta-data">
-
-
-
 							  <span class="song-title">{{ e.description }}</span>
-							  <span class="song-artist">{{ e.code }}</span>
+							  <span class="song-artist">{{ e.title}} ({{ e.transcript|split(' ')|length }} words)</span>
 						  </div>
 
-						  <div>
-							  <a href="{{ path('exhibit_recorder', e.rp) }}" class="bandcamp-link" ><i class="fa fa-microphone fa-2x"></i></a>
-						  </div>
 
 						  <!--
 						  <a href="{{ path('exhibit_player', e.rp) }}" class="bandcamp-link" target="_blank">
@@ -131,10 +122,14 @@
 							  <img class="bandcamp-white" src="/playlist/img/bandcamp-white.svg"/>
 						  </a>
 						  -->
-						  <span class="song-duration">{{ e.duration }}</span>
+						  <span class="song-duration">{{ e.duration|date('i:s', '+00:00 GMT')  }}</span>
 					  </div>
 
+						  <span>
+							  <a href="{{ path('exhibit_recorder', e.rp) }}" class="bandcamp-link" ><i class="fa fa-microphone fa-2x text-danger"></i></a>
+						  </span>
 
+					  </div>
 					  {% endfor %}
 		</div>
 
@@ -143,6 +138,9 @@
 		</div>
 
 	</body>
+
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('player') }}
 
 
 </html>

@@ -47,6 +47,7 @@ div#amplitude-right div.song div.song-now-playing-icon-container {
   height: 20px;
   margin-right: 10px;
 }
+
 div#amplitude-right div.song div.song-now-playing-icon-container img.now-playing {
   display: none;
   margin-top: 15px;
@@ -82,9 +83,9 @@ div#amplitude-right div.song div.song-meta-data span.song-title {
 }
 div#amplitude-right div.song div.song-meta-data span.song-artist {
   color: #607D8B;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: bold;
-  text-transform: uppercase;
+/*  text-transform: uppercase; */
   display: block;
   white-space: nowrap;
   overflow: hidden;
