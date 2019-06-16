@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}s3 buckets{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <ol>
+        {% for file in bucket %}
+            <li>
+                {{ file.Key }} {{ (file.Size / (1024))|number_format(0) }}k, {{ file.LastModified|date() }}
+            </li>
+        {% endfor %}
+
+    </ol>
+</div>
+{% endblock %}

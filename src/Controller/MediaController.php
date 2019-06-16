@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Aws\Result;
 use Aws\S3\S3Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,11 +26,10 @@ class MediaController extends AbstractController
      */
     public function bucketList(S3Client $s3, $name)
     {
+        /** @var Result $result */
         $result = $s3->listObjects(['Bucket' => $name]);
-        dump($result); die();
-        return $this->render('media/index.html.twig', [
-            'buckets' => $result->get('Buckets'),
-            'controller_name' => 'MediaController',
+        return $this->render('media/bucket.html.twig', [
+            'bucket' => $result->get('Contents'),
         ]);
     }
 

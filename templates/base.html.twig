@@ -11,8 +11,6 @@
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
             <link rel="manifest" href="/icons/site.webmanifest">
-
-
             <title>{% block title %}Museo Zac{% endblock %}</title>
 
         {% block stylesheets %}
@@ -33,20 +31,37 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('s3_index') }}">S3</a>
-                    </li>
+                    {#
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
+                    #}
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Super Admin</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="{{ path('s3_index') }}">S3</a>
+                            <a class="dropdown-item" href="{{ path('s3_bucket', {name: 'museo.survos.com'}) }}">Audio Files</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout {{ app.user.username }}</a>
+                    </li>
+                        {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Login</a>
+                    </li>
+                            {# broken in 4.3 because of validation.
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Register</a>
+                    </li>
+                    #}
+                    {% endif %}
+
                 </ul>
                 {# eventually an exhibit search ...
                 <form class="form-inline my-2 my-lg-0">

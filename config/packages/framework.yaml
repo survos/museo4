@@ -26,6 +26,11 @@ framework:
       fallbacks: ['en']
       # ...
 
+    # hack for FOS User https://stackoverflow.com/questions/33404302/symfony2-error-the-service-templating-has-a-dependency-on-a-non-existent-serv
+    templating:
+        engines: ['twig', 'php']
+
 parameters:
     env(S3_BUCKET): 'museo.survos.com'
+    mailer_user: '%env(MAILER_USER)%'
 

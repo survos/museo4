@@ -54,8 +54,8 @@
                 <td>{{ exhibit.title }}</td>
                 <td>{{ exhibit.description }} </td>
                 <td>
+
                     <a href="{{ path('exhibit_show', {'id': exhibit.id}) }}">show</a>
-                    <a href="{{ path('exhibit_player', {'id': exhibit.id}) }}">play</a>
                     <a href="{{ path('exhibit_recorder', {'id': exhibit.id}) }}"><i class="fa fa-microphone"></i> recorder</a>
                     <a href="{{ path('exhibit_edit', {'id': exhibit.id}) }}">edit</a>
                 </td>
