@@ -159,6 +159,25 @@
     "monolog/monolog": {
         "version": "1.24.0"
     },
+    "msgphp/domain": {
+        "version": "v0.10.0"
+    },
+    "msgphp/user": {
+        "version": "v0.10.0"
+    },
+    "msgphp/user-bundle": {
+        "version": "0.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.10",
+            "ref": "4067ee796789a8828ec72f82c76508a76875bcf8"
+        },
+        "files": [
+            "config/packages/msgphp_user.php",
+            "src/Entity/User.php"
+        ]
+    },
     "mtdowling/jmespath.php": {
         "version": "2.4.0"
     },
@@ -245,6 +264,9 @@
     },
     "rmccue/requests": {
         "version": "v1.7.0"
+    },
+    "sebastian/diff": {
+        "version": "3.0.2"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -433,6 +455,18 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "e332e9487c4f705a78ddf30d5aee8b50a0009db3"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
     },
     "symfony/mime": {
         "version": "v4.3.0"

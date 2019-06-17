@@ -14,6 +14,7 @@
         "knplabs/knp-gaufrette-bundle": "^0.6.1",
         "knplabs/knp-markdown-bundle": "^1.7",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "msgphp/user-bundle": "^0.10.0",
         "oneup/flysystem-bundle": "^3.1",
         "php-ffmpeg/php-ffmpeg": "^0.14.0",
         "sensio/framework-extra-bundle": "^5.1",
@@ -29,6 +30,7 @@
         "symfony/framework-bundle": "4.3.*",
         "symfony/http-client": "4.3.*",
         "symfony/intl": "4.3.*",
+        "symfony/messenger": "4.3.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
         "symfony/process": "4.3.*",
@@ -45,6 +47,7 @@
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
+        "sebastian/diff": "^3.0",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",

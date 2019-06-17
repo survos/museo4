@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe8874cd67925e8b86e719914fc43ab8",
+    "content-hash": "6a7e94bb7e6055bbb5ba488caf94899a",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -71,16 +71,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.100.3",
+            "version": "3.100.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe"
+                "reference": "803f3cdc37f42112c4df1af0a77e25130b9448d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
-                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/803f3cdc37f42112c4df1af0a77e25130b9448d3",
+                "reference": "803f3cdc37f42112c4df1af0a77e25130b9448d3",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +150,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-06-13T19:22:34+00:00"
+            "time": "2019-06-14T18:12:13+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -2531,6 +2531,180 @@
                 "psr-3"
             ],
             "time": "2018-11-05T09:00:11+00:00"
+        },
+        {
+            "name": "msgphp/domain",
+            "version": "v0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/domain.git",
+                "reference": "43d16e56efb8a3d6fcb90e0ea6b86d5aaccd3fa7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/domain/zipball/43d16e56efb8a3d6fcb90e0ea6b86d5aaccd3fa7",
+                "reference": "43d16e56efb8a3d6fcb90e0ea6b86d5aaccd3fa7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.0"
+            },
+            "conflict": {
+                "symfony/messenger": "<4.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.6",
+                "ramsey/uuid": "^3.7",
+                "symfony/messenger": "^4.2",
+                "symfony/var-exporter": "^4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\Domain\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "A dependency-free package to help building a business domain layer",
+            "keywords": [
+                "command query responsibility segregation",
+                "cqrs",
+                "ddd",
+                "domain model",
+                "domain-driven-design",
+                "entity",
+                "es",
+                "event sourcing",
+                "orm",
+                "repository",
+                "rich domain model"
+            ],
+            "time": "2019-03-27T15:36:57+00:00"
+        },
+        {
+            "name": "msgphp/user",
+            "version": "v0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/user.git",
+                "reference": "374fe2696729ae47cc3c1e002b5e115ef07b4ebe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/user/zipball/374fe2696729ae47cc3c1e002b5e115ef07b4ebe",
+                "reference": "374fe2696729ae47cc3c1e002b5e115ef07b4ebe",
+                "shasum": ""
+            },
+            "require": {
+                "msgphp/domain": "^0.10"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.6",
+                "symfony/form": "^3.4 || ^4.0",
+                "symfony/security-core": "^3.4 || ^4.0",
+                "symfony/validator": "^3.4 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\User\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "A domain layer providing basic user management",
+            "keywords": [
+                "ddd",
+                "domain-driven-design",
+                "rich domain model",
+                "security",
+                "user"
+            ],
+            "time": "2019-03-27T15:36:57+00:00"
+        },
+        {
+            "name": "msgphp/user-bundle",
+            "version": "v0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/msgphp/user-bundle.git",
+                "reference": "12eb7bed92fb78cd3178abdf725f3bd975d30350"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/msgphp/user-bundle/zipball/12eb7bed92fb78cd3178abdf725f3bd975d30350",
+                "reference": "12eb7bed92fb78cd3178abdf725f3bd975d30350",
+                "shasum": ""
+            },
+            "require": {
+                "msgphp/user": "^0.10",
+                "symfony/config": "^3.4 || ^4.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0",
+                "symfony/http-kernel": "^3.4 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MsgPhp\\UserBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roland Franssen",
+                    "email": "franssen.roland@gmail.com"
+                }
+            ],
+            "description": "Basic user management (the `User` domain)",
+            "keywords": [
+                "security",
+                "user"
+            ],
+            "time": "2019-03-27T15:36:57+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -5395,16 +5569,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.2.6",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "5ed49091eb73f912dd23dab92bf07c0180cfb009"
+                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/5ed49091eb73f912dd23dab92bf07c0180cfb009",
-                "reference": "5ed49091eb73f912dd23dab92bf07c0180cfb009",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/8618b243d44bac71e4006062f245d807d84f7a6c",
+                "reference": "8618b243d44bac71e4006062f245d807d84f7a6c",
                 "shasum": ""
             },
             "require": {
@@ -5440,7 +5614,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-06-05T14:26:30+00:00"
+            "time": "2019-06-15T07:15:42+00:00"
         },
         {
             "name": "symfony/form",
@@ -6046,6 +6220,80 @@
                 "localization"
             ],
             "time": "2019-05-30T16:10:05+00:00"
+        },
+        {
+            "name": "symfony/messenger",
+            "version": "v4.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/messenger.git",
+                "reference": "47d2b91e111da96045208cceb86d4732c39d385e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/messenger/zipball/47d2b91e111da96045208cceb86d4732c39d385e",
+                "reference": "47d2b91e111da96045208cceb86d4732c39d385e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "psr/log": "~1.0"
+            },
+            "conflict": {
+                "symfony/debug": "<4.1",
+                "symfony/event-dispatcher": "<4.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.5",
+                "psr/cache": "~1.0",
+                "symfony/console": "~3.4|~4.0",
+                "symfony/debug": "~4.1",
+                "symfony/dependency-injection": "~3.4.19|^4.1.8",
+                "symfony/doctrine-bridge": "~3.4|~4.0",
+                "symfony/event-dispatcher": "~4.3",
+                "symfony/http-kernel": "~3.4|~4.0",
+                "symfony/process": "~3.4|~4.0",
+                "symfony/property-access": "~3.4|~4.0",
+                "symfony/serializer": "~3.4|~4.0",
+                "symfony/service-contracts": "^1.1",
+                "symfony/stopwatch": "~3.4|~4.0",
+                "symfony/validator": "~3.4|~4.0",
+                "symfony/var-dumper": "~3.4|~4.0"
+            },
+            "suggest": {
+                "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Samuel Roze",
+                    "email": "samuel.roze@gmail.com"
+                }
+            ],
+            "description": "Symfony Messenger Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-06-05T13:18:57+00:00"
         },
         {
             "name": "symfony/mime",
@@ -8664,6 +8912,62 @@
                 "php"
             ],
             "time": "2019-05-25T20:07:01+00:00"
+        },
+        {
+            "name": "sebastian/diff",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/diff.git",
+                "reference": "720fcc7e9b5cf384ea68d9d930d480907a0c1a29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/720fcc7e9b5cf384ea68d9d930d480907a0c1a29",
+                "reference": "720fcc7e9b5cf384ea68d9d930d480907a0c1a29",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5 || ^8.0",
+                "symfony/process": "^2 || ^3.3 || ^4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kore Nordmann",
+                    "email": "mail@kore-nordmann.de"
+                },
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                }
+            ],
+            "description": "Diff implementation",
+            "homepage": "https://github.com/sebastianbergmann/diff",
+            "keywords": [
+                "diff",
+                "udiff",
+                "unidiff",
+                "unified diff"
+            ],
+            "time": "2019-02-04T06:01:07+00:00"
         },
         {
             "name": "symfony/browser-kit",
