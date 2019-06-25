@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Exhibit;
 use App\Form\ExhibitType;
 use App\Repository\ExhibitRepository;
+use App\Repository\MuseumRepository;
 use Aws\S3\S3Client;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -144,9 +145,10 @@ class ExhibitController extends AbstractController
      * @Route("/exhibits", name="exhibit_index", methods={"GET"})
      * @Route("/", name="home", methods={"GET"})
      */
-    public function index(ExhibitRepository $exhibitRepository): Response
+    public function index(ExhibitRepository $exhibitRepository, MuseumRepository $museumRepository): Response
     {
         return $this->render('exhibit/index.html.twig', [
+            'museums' => $museumRepository->findAll(),
             'exhibits' => $exhibitRepository->findAll(),
         ]);
     }

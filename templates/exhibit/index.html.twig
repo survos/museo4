@@ -34,6 +34,44 @@
         </div>
     </div>
 
+    <div class="container">
+        <h4>Musuems</h4>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in museums%}
+                <tr>
+                    <td>{{ m.id }}</td>
+                    <td>{{ m.name }}</td>
+                    <td>{{ m.slug }} </td>
+                    {#
+                    <td>
+                        <a href="{{ path('exhibit_show', {'id': exhibit.id}) }}">show</a>
+                        <a href="{{ path('exhibit_player', {'id': exhibit.id}) }}">play</a>
+                        <a href="{{ path('exhibit_recorder', {'id': exhibit.id}) }}"><i class="fa fa-microphone"></i> recorder</a>
+                        <a href="{{ path('exhibit_edit', {'id': exhibit.id}) }}">edit</a>
+                    </td>
+                    #}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no museums found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('exhibit_new') }}">Create new</a>
+    </div>
+
 
     <div class="container">
         <h4>Exhibits</h4>

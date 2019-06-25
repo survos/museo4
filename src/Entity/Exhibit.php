@@ -59,6 +59,12 @@ class Exhibit
      */
     private $duration;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Room", inversedBy="exhibits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $room;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,6 +173,18 @@ class Exhibit
     public function setDuration(?int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getRoom(): ?Room
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?Room $room): self
+    {
+        $this->room = $room;
 
         return $this;
     }

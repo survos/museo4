@@ -3,6 +3,8 @@
 namespace App\Command;
 
 use App\Entity\Exhibit;
+use App\Entity\Museum;
+use App\Entity\Room;
 use App\Services\DocxConversion;
 use Doctrine\ORM\EntityManagerInterface;
 /*
@@ -41,7 +43,8 @@ class ImportDocxCommand extends Command
             ->addArgument('rootDir', InputArgument::OPTIONAL, 'Source AudioGuias Directory', "./data")
             ->addArgument('cacheDir', InputArgument::OPTIONAL, 'Target Text AudioGuias Directory', "../data/museo")
             ->addOption('purge', null, InputOption::VALUE_NONE, 'Purge pages first')
-            ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Page limmit', 0)
+            ->addOption('museum', null, InputOption::VALUE_OPTIONAL, 'Museum Code ', 'museo-zacatecano')
+            ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Page limit', 0)
             ->addOption('search', null, InputOption::VALUE_OPTIONAL, 'filename search', null )
         ;
     }
@@ -68,8 +71,23 @@ class ImportDocxCommand extends Command
 
         // Outputs "Hola Mundo!"
         */
-
         $io = new SymfonyStyle($input, $output);
+
+        if (!$museum = $this->em->getRepository(Museum::class)->findOneBy(['slug' => ($museumSlug = $input->getOption('museum'))] )) {
+            $io->error("Missing museum $museumSlug!");
+            return false;
+        }
+
+        $roomRepo = $this->em->getRepository(Room::class);
+        $defaultRoomName = 'Storage';
+        if (!$room = $roomRepo->findOneBy(['museum' => $museum, 'name' => '$defaultRoomName'])) {
+            $room = (new Room())
+                ->setName($defaultRoomName)
+                ->setMuseum($museum)
+                ;
+            $this->em->persist($room);
+        }
+
         $this->io = $io;
         $arg1 = $input->getArgument('rootDir');
 
@@ -86,21 +104,6 @@ class ImportDocxCommand extends Command
 
 
         $repo = $this->em->getRepository(Exhibit::class);
-
-        $api_url = 'http://mw.localhost/api.php';
-        # $api_url = 'http://138.128.242.220/api.php';
-        $username = 'tac';
-        $password = 'no2smoke';
-        $wiki = new Wikimate($api_url);
-        echo "Attempting to log in . . . ";
-        if ($wiki->login($username, $password)) {
-            echo "Success.\n";
-        } else {
-            $error = $wiki->getError();
-            echo "\nWikimate error: ".$error['login']."\n";
-            exit(1);
-        }
-
 
         $i = 0;
         $filesByDir = [];
@@ -121,6 +124,7 @@ class ImportDocxCommand extends Command
 
             if (!$exhibit = $repo->findOneBy(['filename' => $basename])) {
                 $exhibit = (new Exhibit())
+                    ->setRoom($room)
                     ->setTitle($basename)
                     ->setFilename($basename)
                 ;
@@ -156,6 +160,7 @@ class ImportDocxCommand extends Command
                 dump($text);
                 $description = '?? ' . mb_substr($text, 0, 48);
             }
+
 
 
             $exhibit
