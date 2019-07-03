@@ -102,6 +102,19 @@
             "config/packages/dev/easy_log_handler.yaml"
         ]
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
+        },
+        "files": [
+            "config/packages/easy_admin.yaml",
+            "config/routes/easy_admin.yaml"
+        ]
+    },
     "egulias/email-validator": {
         "version": "2.1.8"
     },
@@ -146,6 +159,12 @@
     },
     "knplabs/knp-markdown-bundle": {
         "version": "1.7.1"
+    },
+    "knplabs/knp-menu": {
+        "version": "2.4-dev"
+    },
+    "knplabs/knp-menu-bundle": {
+        "version": "2.2.x-dev"
     },
     "league/flysystem": {
         "version": "1.0.52"
@@ -201,6 +220,9 @@
         "files": [
             "config/packages/oneup_flysystem.yaml"
         ]
+    },
+    "pagerfanta/pagerfanta": {
+        "version": "v2.1.2"
     },
     "php-ffmpeg/php-ffmpeg": {
         "version": "v0.14"
@@ -312,6 +334,9 @@
         "files": [
             "config/packages/stof_doctrine_extensions.yaml"
         ]
+    },
+    "survos/landing-bundle": {
+        "version": "dev-master"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
@@ -719,6 +744,18 @@
     "symfony/yaml": {
         "version": "v4.3.0"
     },
+    "twig/extensions": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
+        },
+        "files": [
+            "config/packages/twig_extensions.yaml"
+        ]
+    },
     "twig/twig": {
         "version": "v2.11.0"
     },
@@ -730,8 +767,5 @@
     },
     "zendframework/zend-diactoros": {
         "version": "2.1.2"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     }
 }

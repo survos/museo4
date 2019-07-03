@@ -26,7 +26,7 @@ class Museum
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Room", mappedBy="Museum", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Room", mappedBy="museum", orphanRemoval=true)
      */
     private $rooms;
 
