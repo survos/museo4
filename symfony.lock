@@ -121,9 +121,6 @@
     "evenement/evenement": {
         "version": "v2.1.0"
     },
-    "facebook/webdriver": {
-        "version": "1.6.0"
-    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -369,9 +366,6 @@
             "config/bootstrap.php"
         ]
     },
-    "symfony/contracts": {
-        "version": "v1.1.0"
-    },
     "symfony/css-selector": {
         "version": "v4.3.0"
     },
@@ -518,9 +512,6 @@
     },
     "symfony/orm-pack": {
         "version": "v1.0.6"
-    },
-    "symfony/panther": {
-        "version": "v0.3.0"
     },
     "symfony/phpunit-bridge": {
         "version": "4.3",
