@@ -1,7 +1,7 @@
 # see https://github.com/symfony/recipes/blob/master/symfony/security-bundle/3.3/config/packages/security.yaml
 security:
     encoders:
-        MsgPhp\User\Infrastructure\Security\SecurityUser: bcrypt
+        MsgPhp\User\Infrastructure\Security\UserIdentity: auto
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
