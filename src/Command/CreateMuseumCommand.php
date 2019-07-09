@@ -22,7 +22,7 @@ class CreateMuseumCommand extends Command
     {
         $this
             ->setDescription('Create a Museum')
-            ->addArgument('name', InputArgument::REQUIRED, 'Museum Name')
+            ->addArgument('name', InputArgument::OPTIONAL, 'Museum Name', 'Museo Zacatecano')
             ->addOption('slug', null, InputOption::VALUE_NONE, 'Override default slug')
         ;
     }
