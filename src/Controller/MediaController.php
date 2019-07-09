@@ -26,7 +26,6 @@ class MediaController extends AbstractController
     public function bucketList(S3Client $s3, $name)
     {
         $result = $s3->listObjects(['Bucket' => $name]);
-        dump($result); die();
         return $this->render('media/index.html.twig', [
             'buckets' => $result->get('Buckets'),
             'controller_name' => 'MediaController',

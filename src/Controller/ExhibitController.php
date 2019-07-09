@@ -143,7 +143,7 @@ class ExhibitController extends AbstractController
 
     /**
      * @Route("/exhibits", name="exhibit_index", methods={"GET"})
-     * @Route("/", name="home", methods={"GET"})
+     * @Route("/home", name="home", methods={"GET"})
      */
     public function index(ExhibitRepository $exhibitRepository, MuseumRepository $museumRepository): Response
     {

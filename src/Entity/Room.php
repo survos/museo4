@@ -117,4 +117,9 @@ class Room
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return sprintf("%s-%s", $this->getMuseum()->getName(), $this->getName());
+    }
 }
