@@ -82,7 +82,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../Survos/LandingBundle"
+            "url": "../Survos/LandingBundleXX"
         },
         {
             "type": "path",

@@ -23,6 +23,7 @@ class MenuBuilder extends LandingMenuBuilder
 
         $menu->addChild('exhibits', ['route' => 'exhibit_index']);
         $menu->addChild('admin', ['route' => 'easyadmin']);
+        $menu->addChild('player', ['route' => 'player']);
 
         // ... add more children
 
