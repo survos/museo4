@@ -36,6 +36,17 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/app", name="museo_app")
+     */
+    public function museo(ExhibitRepository $repo)
+    {
+        $exhibits = $repo->findWithAudio();
+        return $this->render("MuseoApp.html.twig", [
+            'exhibits' => $exhibits
+        ]);
+    }
+
+    /**
      * @Route("/phpinfo", name="phpinfo")
      * PASSWORDS EXPOSED!!
     public function phpinfo(ExhibitRepository $repo)

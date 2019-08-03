@@ -1,15 +1,5 @@
 easy_admin:
-  design:
-    menu:
-      - { label: 'Landing', route: 'survos_landing' }
-      - Museum
-      - Room
-      - User
-      - Exhibit
-  # ...
-  entities:
-        # List the entity class name you want to manage
+    entities:
         - App\Entity\Museum
-        - App\Entity\Room
         - App\Entity\Exhibit
-        - App\Entity\User
+        - App\Entity\Room

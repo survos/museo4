@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MuseoApp{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('MuseoApp') }}
+    {{ encore_entry_script_tags('museo-app-page') }}
+
+    {#
+#}
+    <!-- Include Amplitude JS
+    <script type="text/javascript" src="../../dist/amplitude.js"></script>
+    -->
+
+    <!-- Foundation jQuery and Functions
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/foundation.min.js"></script>
+    -->
+    <!--
+        Include UX functions JS
+
+        NOTE: These are for handling things outside of the scope of AmplitudeJS
+    <script type="text/javascript" src="js/functions.js"></script>
+    -->
+
+{% endblock %}
+
+{% block XXstylesheets %}
+
+    <!-- Foundation Framework CSS -->
+    <link rel="stylesheet" href="/styles/foundation.min.css">
+
+    <!-- Include font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i" rel="stylesheet">
+    <!-- Include Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('amp/examples/single-song/css/app.css') }}"/>
+
+{% endblock %}
+
+{% block body %}
+
+<h1>MuseoApp</h1>
+
+    <div class="js-museo-app">
+        js-museo-app content here.
+    </div>
+
+{% endblock %}

@@ -20,8 +20,8 @@ return [
     Oneup\FlysystemBundle\OneupFlysystemBundle::class => ['all' => true],
     Sentry\SentryBundle\SentryBundle::class => ['all' => true],
     Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
-    MsgPhp\UserBundle\MsgPhpUserBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
-    EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Survos\LandingBundle\SurvosLandingBundle::class => ['all' => true],
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
+    EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
 ];

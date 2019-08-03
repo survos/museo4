@@ -1,18 +1,14 @@
 # see https://github.com/symfony/recipes/blob/master/symfony/security-bundle/3.3/config/packages/security.yaml
 security:
-    encoders:
-        MsgPhp\User\Infrastructure\Security\UserIdentity: auto
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
-        msgphp_user: { id: MsgPhp\User\Infrastructure\Security\UserIdentityProvider }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
-            provider: msgphp_user
 
             # activate different ways to authenticate
 
