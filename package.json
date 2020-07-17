@@ -20,7 +20,7 @@
         "amplitudejs": "^4.1.0",
         "bootstrap": "^4.3.1",
         "foundation": "^4.2.1-1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "lodash": "^4.17.19",
         "popper.js": "^1.15.0",
         "underscore": "^1.9.1"
