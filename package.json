@@ -23,6 +23,6 @@
         "jquery": "^3.4.1",
         "lodash": "^4.17.19",
         "popper.js": "^1.15.0",
-        "underscore": "^1.9.1"
+        "underscore": "^1.12.1"
     }
 }
